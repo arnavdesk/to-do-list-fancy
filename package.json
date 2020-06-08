@@ -1,0 +1,21 @@
+{
+  "name": "to-do-list-fancy",
+  "version": "1.0.0",
+  "description": "A fancy to do list web app which helps in completing chores throughout the day!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "to-do-list",
+    "to-do",
+    "list",
+    "task",
+    "task-list",
+    "checklist",
+    "check-list",
+    "todo"
+  ],
+  "author": "arnavdesk",
+  "license": "ISC"
+}
