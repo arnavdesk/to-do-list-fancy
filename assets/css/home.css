@@ -1,0 +1,55 @@
+.list-item{
+    opacity: 1;
+    transition : all 0.4s cubic-bezier(.36,-0.64,.34,1.76);
+    /* background-color: whitesmoke; */
+    margin: 2px 0px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid lightslategray;
+}
+
+
+.input-check:checked + label div{
+    text-decoration: line-through;
+}
+
+label{
+    width: 70%;
+}
+
+.delete{
+    margin-left: auto;
+}
+
+.todo-div{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=checkbox]{
+    zoom: 1.5;
+}
+
+.note{
+    /* color: slategray; */
+}
+
+.completion-date{
+    color: lightslategray;
+}
+
+.category{
+    background-color: green;
+    border: 1px solid black;
+    color: white;
+    font-weight: normal;
+    font-size: 0.8em;
+    padding: 8px;
+}

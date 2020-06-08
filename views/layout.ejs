@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List!</title>
+    <%- style %>
+    <link rel="stylesheet" href="/css/layout.css">
+</head>
+
+<body>
+
+    <main>
+        <div class="app-heading border-bottom-px padding-10px">
+            <h1 class="heading"><i class="fas fa-clipboard-list"></i> TODO App</h1>
+        </div>
+
+
+        <div class="task-input border-bottom-px padding-10px">
+            <h4 class="subheadings"> Task Description</h4>
+            <input type="text" name="task" id="task-desc" placeholder="What do you need to do?">
+        </div>
+
+        <form action="/add-contact" method="POST">
+            <div class="task-details border-bottom-px">
+
+                <div class="basic-details">
+                    <div class="category-div padding-10px">
+                        <h4 class="subheadings">Category</h4>
+                        <select name="category" id="task-category">
+                            <option value="invalid">Choose Category : </option>
+                            <option value="college">College</option>
+                            <option value="work">Work</option>
+                            <option value="gym">Gym</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="due-div padding-10px">
+                        <h4 class="subheadings ">Due Date</h4>
+                        <input type="date" name="date" id="due-date">
+                    </div>
+
+                </div>
+                <!-- <div class="extended-details">
+
+            </div> -->
+            </div>
+
+
+            <div class="actions border-bottom-px padding-10px">
+                <button class="center-align" id="add" type="submit"><i class="fas fa-plus"></i> ADD TASK</button>
+                <button class="center-align" id="delete-all" type="button"> <i class="far fa-trash-alt"></i> DELETE ALL
+                </button>
+                <button class="center-align" id="delete-completed" type="button"> <i class="fas fa-check"></i> DELETE
+                    COMPLETED</button>
+            </div>
+        </form>
+
+        <div class="task-container border-bottom-px padding-10px">
+            <ul id="item-list">
+                <%- body %>
+            </ul>
+        </div>
+
+
+    </main>
+
+
+    <script src="https://kit.fontawesome.com/c2e4f2d141.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+    </style>
+    <%- script %>
+</body>
+
+</html>
