@@ -5,6 +5,9 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 
 
+const Task = require("./models/task");
+
+const db = require("./config/mongoose");
 
 // Static files
 app.use(express.static("./assets"));
@@ -17,6 +20,8 @@ app.set("layout extractScripts", true);
 // use layouts
 app.use(expressLayouts);
 
+// read request
+app.use(express.urlencoded());
 
 // routing
 app.use("/", require("./routes"));
@@ -24,8 +29,6 @@ app.use("/", require("./routes"));
 // set up ejs
 app.set("view engine", "ejs");
 app.set("views", "./views")
-
-
 
 
 app.listen(port, function (err) {

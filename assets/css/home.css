@@ -46,6 +46,8 @@ input[type=checkbox]{
 }
 
 .category{
+    width: 15%;
+    text-align: center;
     background-color: green;
     border: 1px solid black;
     color: white;
