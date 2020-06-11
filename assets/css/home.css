@@ -25,6 +25,10 @@ label{
     margin-left: auto;
 }
 
+.delete a{
+    color: black;
+}
+
 .todo-div{
     box-sizing: border-box;
     width: 100%;
@@ -37,9 +41,6 @@ input[type=checkbox]{
     zoom: 1.5;
 }
 
-.note{
-    /* color: slategray; */
-}
 
 .completion-date{
     color: lightslategray;

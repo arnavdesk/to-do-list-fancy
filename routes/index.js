@@ -6,12 +6,12 @@ const taskController = require("../controllers/task_controller");
 
 
 
-
-
 router.get("/", taskController.load);
 
-router.post("/add-contact", taskController.add);
+router.post("/add-task", taskController.add);
 
-router.get("/delete-contact", taskController.delete);
+router.get("/delete-task", taskController.delete);
+
+router.get("/delete-all", taskController.deleteAll);
 
 module.exports = router;

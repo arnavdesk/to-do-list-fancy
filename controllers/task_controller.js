@@ -1,4 +1,5 @@
 const Task = require("../models/task");
+const db = require("../config/mongoose")
 
 module.exports.load = function (request, response) {
 
@@ -41,4 +42,17 @@ module.exports.delete = function (request, response) {
             return response.redirect('back');
         }
     })
+}
+
+module.exports.deleteAll = function (request, response) {
+    Task.deleteMany({}, function (err) {
+        if (err) {
+            console.log("error in deletion");
+            return response.redirect('back');
+        }
+        else {
+            return response.redirect('back');
+        }
+    })
+
 }
