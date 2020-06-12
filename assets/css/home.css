@@ -13,6 +13,11 @@
     border-bottom: 1px solid lightslategray;
 }
 
+.list-item:hover{
+    background-color: gray !important;
+    transform: scale(1.02);
+}
+
 
 .input-check:checked ~ label div{
     text-decoration: line-through;

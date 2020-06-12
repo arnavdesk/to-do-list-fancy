@@ -35,6 +35,7 @@
         }
         if (chkbox.parentElement.querySelector(".state").innerHTML == 1) {
             chkbox.checked = true;
+            chkbox.parentElement.querySelector(".deadline").style.display = "none";
             chkbox.parentElement.style.backgroundColor = "gray";
         } else {
             chkbox.checked = false;
@@ -45,7 +46,11 @@
 
     for (const chkbox of checkboxes) {
         chkbox.onchange = function () {
+            let lastDate = new Date(chkbox.parentElement.querySelector(".completion-date-raw").innerHTML);
+            let today = new Date();
+            let daysLeft = (lastDate.getTime() - today.getTime()) / (60 * 60 * 24 * 1000);
             if (chkbox.checked) {
+                chkbox.parentElement.querySelector(".deadline").style.display = "none";
                 chkbox.parentElement.style.backgroundColor = "gray";
                 fetch("/update-state?" + "id=" +
                     chkbox.parentElement.querySelector(".id").innerHTML
@@ -53,6 +58,9 @@
                 chkbox.parentElement.querySelector(".state").innerHTML = 1;
             }
             else {
+                if (daysLeft < 4) {
+                    chkbox.parentElement.querySelector(".deadline").style.display = "block";
+                }
                 chkbox.parentElement.style.backgroundColor = "white";
                 fetch("/update-state?" + "id=" +
                     chkbox.parentElement.querySelector(".id").innerHTML
