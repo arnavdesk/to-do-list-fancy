@@ -19,7 +19,7 @@
         <form action="/add-task" method="POST">
             <div class="task-input border-bottom-px padding-10px">
                 <h4 class="subheadings"> Task Description</h4>
-                <input type="text" name="task" id="task-desc" placeholder="What do you need to do?">
+                <input type="text" name="task" id="task-desc" placeholder="What do you need to do?" required>
             </div>
 
             <div class="task-details border-bottom-px">
@@ -27,18 +27,18 @@
                 <div class="basic-details">
                     <div class="category-div padding-10px">
                         <h4 class="subheadings">Category</h4>
-                        <select name="category" id="task-category">
-                            <option value="invalid">Choose Category : </option>
-                            <option value="college">College</option>
-                            <option value="home">Home</option>
-                            <option value="work">Work</option>
-                            <option value="gym">Gym</option>
-                            <option value="other">Other</option>
+                        <select name="category" id="task-category" required>
+                            <option value="">Choose Category : </option>
+                            <option value="College">College</option>
+                            <option value="Home">Home</option>
+                            <option value="Work">Work</option>
+                            <option value="Gym">Gym</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div class="due-div padding-10px">
                         <h4 class="subheadings ">Due Date</h4>
-                        <input type="date" name="date" id="due-date">
+                        <input type="date" name="date" id="due-date" required>
                     </div>
 
                 </div>
@@ -49,11 +49,14 @@
 
 
             <div class="actions border-bottom-px padding-10px">
-                <button class="center-align" id="add" type="submit"><i class="fas fa-plus"></i> ADD TASK</button>
-                <button onclick="location.href='/delete-all'" class="center-align" id="delete-all" type="button">
+                <button class="center-align max-width-item" id="add" type="submit"><i class="fas fa-plus"></i> ADD
+                    TASK</button>
+                <button onclick="location.href='/delete-all'" class="center-align max-width-item" id="delete-all"
+                    type="button">
                     <i class="far fa-trash-alt"></i> DELETE ALL
                 </button>
-                <button class="center-align" id="delete-completed" type="button"> <i class="fas fa-check"></i> DELETE
+                <button onclick="location.href='/delete-completed'" class="center-align max-width-item"
+                    id="delete-completed" type="button"> <i class="fas fa-check"></i> DELETE
                     COMPLETED</button>
             </div>
         </form>
@@ -69,9 +72,8 @@
 
 
     <script src="https://kit.fontawesome.com/c2e4f2d141.js" crossorigin="anonymous"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
-    </style>
+    <script src="/js/layout.js"></script>
+
     <%- script %>
 </body>
 

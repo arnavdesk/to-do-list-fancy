@@ -1,16 +1,29 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" type="text/css" href="/css/home.css">
 
 
 <% for (const it of task_list){ %>
+
 <li class="list-item">
-    <input type="checkbox" id="check1" class="input-check">
-    <label for="check1">
+    <input type="checkbox" id="check<%=it._id%>" class="input-check">
+    <div class="id"><%=it._id%></div>
+    <div class="state"><%=it.state%></div>
+    <div class="completion-date-raw"><%=it.date%> </div>
+    <label for="check<%=it._id%>">
         <div class="todo-div">
             <div class="note"><%=it.task%></div>
-            <div class="completion-date"><i class="far fa-calendar-alt"></i> &nbsp;<%=it.date%></div>
+            <div class="completion-date"><i class="far fa-calendar-alt"></i> &nbsp;<%=it.date.toDateString()%></div>
         </div>
     </label>
-    <div class="category"><%=it.category%></div>
+    <div class="deadline-category-div">
+        <div class="category"><%=it.category%></div>
+        <div class="deadline"> Deadline Near </div>
+    </div>
+
     <div class="delete"><a href="/delete-task/?id=<%=it._id%>"><i class="fas fa-trash"></i></a></div>
 </li>
 <% } %>
+
+<script>
+    var date
+</script>
+<script type="text/javascript" src="/js/home.js"></script>

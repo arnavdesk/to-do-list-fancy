@@ -10,11 +10,11 @@ const taskSchema = new mongoose.Schema({
         required: true
     },
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     state: {
-        type: Number,
+        type: String,
         required: true
     },
 })

@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
 body{
     font-family: 'Balsamiq Sans';
     margin: 0px;
     box-sizing: border-box;
     padding: 10px 0px;
     height: 100vh;
+    font-family: "sriracha";
     background-color: whitesmoke;
     display: flex;
     justify-content: center;
@@ -87,6 +89,7 @@ select{
     border-radius: 5px;
     width: 70%;
     padding: 0px 8px;
+    box-sizing: border-box;
 }
 
 .actions{
@@ -151,3 +154,31 @@ select{
     max-height: 40vh;
     overflow: scroll;
 } */
+
+
+@media screen and (max-width:1200px){
+    main{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .max-width-item{
+        min-width: 250px;
+    }
+    main{
+        width: 98%;
+    }
+    body{
+        font-size: 15px;
+    }
+
+    .actions{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #task-category,#due-date{
+        width: 95%;
+    }
+}
