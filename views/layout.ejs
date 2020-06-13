@@ -11,8 +11,43 @@
 
 <body>
 
+    <div class="alert-container">
+        <div class="overlay"></div>
+        <div class="alert-bar">
+            <h2>Are you sure you want to delete all?</h2>
+            <div id="alert-btn-container">
+                <button id="confirm" class="center-align delete-all" type="button">
+                    Confirm
+                </button>
+                <button class="center-align add" id="cancel" type="button">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="information-leaf">
+        <div class="info-div">
+            <p>1. To add a todo enter description, categeory and due-date. (Everything is mandatory).
+            </p>
+            <p>2. To mark an item as complete either click on checkbox or the todo item. </p>
+            <p>3. "Delete completed" will delete all completed todo from list. </p>
+            <p>4. "Delete all" will delete all the todo from the list.</p>
+            <p>5. To delete a particular item click on dustbin (delete button). </p>
+            <p>6. State of items (completed or not) is stored in db therefore they are persistant. On refreshing it
+                will maintain that item was completed or not.</p>
+            <p>7. There is deadline feature, ie, if the deadline is in next 4 days it will show deadline is near or
+                if the deadline is missed it will show deadline missed.</p>
+        </div>
+        <div id="info-btn">Know-More</div>
+    </div>
+
     <main>
-        <div class="app-heading border-bottom-px padding-10px">
+
+        <div class="app-heading-div border-bottom-px padding-10px">
             <h1 class="heading"><i class="fas fa-clipboard-list"></i> TODO App</h1>
         </div>
 
@@ -49,15 +84,15 @@
 
 
             <div class="actions border-bottom-px padding-10px">
-                <button class="center-align max-width-item" id="add" type="submit"><i class="fas fa-plus"></i> ADD
+                <button class="center-align max-width-item add" type="submit"><i class="fas fa-plus"></i> ADD
                     TASK</button>
-                <button onclick="location.href='/delete-all'" class="center-align max-width-item" id="delete-all"
-                    type="button">
+                <button class="center-align max-width-item delete-completed" id="delete-completed" type="button"> <i
+                        class="fas fa-check"></i> DELETE
+                    COMPLETED</button>
+                <button class="center-align max-width-item delete-all" type="button" id="delete-all">
                     <i class="far fa-trash-alt"></i> DELETE ALL
                 </button>
-                <button onclick="location.href='/delete-completed'" class="center-align max-width-item"
-                    id="delete-completed" type="button"> <i class="fas fa-check"></i> DELETE
-                    COMPLETED</button>
+
             </div>
         </form>
 

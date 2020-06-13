@@ -4,20 +4,19 @@
 <% for (const it of task_list){ %>
 
 <li class="list-item">
-    <input type="checkbox" id="check<%=it._id%>" class="input-check">
     <div class="id"><%=it._id%></div>
     <div class="state"><%=it.state%></div>
     <div class="completion-date-raw"><%=it.date%> </div>
     <label for="check<%=it._id%>">
         <div class="todo-div">
-            <div class="note"><i class="far fa-edit"></i> &nbsp;<%=it.task%></div>
+            <div class="note"><input type="checkbox" id="check<%=it._id%>" class="input-check"><%=it.task%></div>
             <div class="completion-date"><i class="far fa-calendar-alt"></i> &nbsp;<%=it.date.toDateString()%></div>
+            <div class="deadline-category-div">
+                <div class="category"><%=it.category%></div>
+                <div class="deadline"> Deadline Near </div>
+            </div>
         </div>
     </label>
-    <div class="deadline-category-div">
-        <div class="category"><%=it.category%></div>
-        <div class="deadline"> Deadline Near </div>
-    </div>
 
     <div class="delete"><a href="/delete-task/?id=<%=it._id%>"><i class="fas fa-trash"></i></a></div>
 </li>
