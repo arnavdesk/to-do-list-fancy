@@ -5,67 +5,79 @@
 
     for (const it of categoryDivs) {
         if (it.innerHTML.toLowerCase() == "gym") {
-            it.style.backgroundColor = "red";
+            it.style.backgroundColor = "#EF6C00";
         }
         else if (it.innerHTML.toLowerCase() == "home") {
-            it.style.backgroundColor = "green";
+            it.style.backgroundColor = "#2E7D32";
         }
         else if (it.innerHTML.toLowerCase() == "work") {
-            it.style.backgroundColor = "yellow";
+            it.style.backgroundColor = "#4527A0";
         }
         else if (it.innerHTML.toLowerCase() == "other") {
-            it.style.backgroundColor = "pink";
+            it.style.backgroundColor = "#D81B60";
         }
         else if (it.innerHTML.toLowerCase() == "college") {
-            it.style.backgroundColor = "blue";
+            it.style.backgroundColor = "#1565C0";
         }
     }
 
     for (const chkbox of checkboxes) {
-        let lastDate = new Date(chkbox.parentElement.querySelector(".completion-date-raw").innerHTML);
+        let parentListElement = chkbox.parentElement.parentElement.parentElement.parentElement;
+        console.log(parentListElement);
+        let lastDate = new Date(parentListElement.querySelector(".completion-date-raw").innerHTML);
         let today = new Date();
         let daysLeft = (lastDate.getTime() - today.getTime()) / (60 * 60 * 24 * 1000);
         if (daysLeft <= 0) {
-            chkbox.parentElement.querySelector(".deadline").innerHTML = "Deadline Miss";
-            chkbox.parentElement.querySelector(".deadline").style.display = "block";
+            parentListElement.querySelector(".deadline").innerHTML = "Deadline Miss";
+            parentListElement.querySelector(".deadline").style.display = "block";
         }
         else if (daysLeft < 4) {
-            chkbox.parentElement.querySelector(".deadline").style.display = "block";
+            parentListElement.querySelector(".deadline").style.display = "block";
 
         }
-        if (chkbox.parentElement.querySelector(".state").innerHTML == 1) {
+        if (parentListElement.querySelector(".state").innerHTML == 1) {
             chkbox.checked = true;
-            chkbox.parentElement.querySelector(".deadline").style.display = "none";
-            chkbox.parentElement.style.backgroundColor = "gray";
+            parentListElement.querySelector(".deadline").style.display = "none";
+            parentListElement.style.backgroundColor = "gray";
+            parentListElement.querySelector(".completion-date").style.textDecoration = "line-through";
+            parentListElement.querySelector(".note").style.textDecoration = "line-through";
         } else {
             chkbox.checked = false;
-            chkbox.parentElement.style.backgroundColor = "white";
+            parentListElement.style.backgroundColor = "white";
         }
     }
 
 
+
     for (const chkbox of checkboxes) {
+        let parentListElement = chkbox.parentElement.parentElement.parentElement.parentElement;
+        console.log(parentListElement);
         chkbox.onchange = function () {
-            let lastDate = new Date(chkbox.parentElement.querySelector(".completion-date-raw").innerHTML);
+            let lastDate = new Date(parentListElement.querySelector(".completion-date-raw").innerHTML);
             let today = new Date();
             let daysLeft = (lastDate.getTime() - today.getTime()) / (60 * 60 * 24 * 1000);
+
             if (chkbox.checked) {
-                chkbox.parentElement.querySelector(".deadline").style.display = "none";
-                chkbox.parentElement.style.backgroundColor = "gray";
+                parentListElement.querySelector(".deadline").style.display = "none";
+                parentListElement.style.backgroundColor = "gray";
+                parentListElement.querySelector(".completion-date").style.textDecoration = "line-through";
+                parentListElement.querySelector(".note").style.textDecoration = "line-through";
                 fetch("/update-state?" + "id=" +
-                    chkbox.parentElement.querySelector(".id").innerHTML
+                    parentListElement.querySelector(".id").innerHTML
                     + "&state=" + 1).then(response => response.json()).then(data => console.log(data));
-                chkbox.parentElement.querySelector(".state").innerHTML = 1;
+                parentListElement.querySelector(".state").innerHTML = 1;
             }
             else {
                 if (daysLeft < 4) {
-                    chkbox.parentElement.querySelector(".deadline").style.display = "block";
+                    parentListElement.querySelector(".deadline").style.display = "block";
                 }
-                chkbox.parentElement.style.backgroundColor = "white";
+                parentListElement.querySelector(".completion-date").style.textDecoration = "";
+                parentListElement.querySelector(".note").style.textDecoration = "";
+                parentListElement.style.backgroundColor = "white";
                 fetch("/update-state?" + "id=" +
-                    chkbox.parentElement.querySelector(".id").innerHTML
+                    parentListElement.querySelector(".id").innerHTML
                     + "&state=" + 0).then(response => response.json()).then(data => console.log(data));
-                chkbox.parentElement.querySelector(".state").innerHTML = 0;
+                parentListElement.querySelector(".state").innerHTML = 0;
             }
         }
     }

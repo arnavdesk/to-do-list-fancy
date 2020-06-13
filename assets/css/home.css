@@ -13,15 +13,14 @@
     border-bottom: 1px solid lightslategray;
 }
 
+.list-item:last-child{
+    border-bottom: 0px solid lightslategray;
+}
+
 .list-item:hover{
-    background-color: gray !important;
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
-
-.input-check:checked ~ label div{
-    text-decoration: line-through;
-}
 
 label{
     width: 70%;
@@ -53,17 +52,26 @@ input[type=checkbox]{
 
 .completion-date{
     color: black;
+    padding: 2px;
+}
+
+.note{
+    padding: 2px;
+    display: flex;
 }
 
 .category{
-    width: 100%;
+    border-radius: 5px;
+    min-width: 70px;
+    max-width: 70px;
     text-align: center;
     background-color: green;
     border: 1px solid black;
     color: white;
     font-weight: normal;
-    font-size: 0.8em;
-    padding: 8px;
+    font-size: 0.6em;
+    padding: 2px;
+    margin-left: 5px;
 }
 
 .state,.id,.completion-date-raw{
@@ -71,23 +79,24 @@ input[type=checkbox]{
 }
 
 .deadline-category-div{
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    width: 15%;
-    align-items: center;
+    padding: 2px;
 }
 
 .deadline{
+    padding: 2px;
+    border-radius: 5px;
     display: none;
-    margin-top: 2px;
-    width: 100%;
     border: 1px solid black;
     color: white;
     background-color: red;
     font-size: 0.6em;
     text-align: center;
-    padding: 2px;
     font-weight: normal;
+    /* min-width: 100px;
+    max-width: 100px; */
+    margin-left: 20px;
 }
 
 @media screen and (max-width:768px){
@@ -97,14 +106,14 @@ input[type=checkbox]{
     label{
         width: 99%;
     }
-    .list-item{
+    /* .list-item{
         flex-direction: column;
         align-items: flex-start;
-    }
-    .deadline-category-div{
+    } */
+    /* .deadline-category-div{
         width: 30%;
         align-self: center;
-    }
+    } */
     .delete{
         margin-left: 8px;
     }
