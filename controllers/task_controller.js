@@ -1,6 +1,11 @@
 const Task = require("../models/task");
 const db = require("../config/mongoose")
 
+// This functions finds the whole list in database and then renders home.ejs
+// it also sends the list to be rendered as ejs locals
+// it sends additional paramets which is to tell to update layout so that 
+// user can filter by sorted or unsorted
+
 module.exports.load = function (request, response) {
 
     Task.find({}, function (err, tasks) {
@@ -19,6 +24,11 @@ module.exports.load = function (request, response) {
     })
 }
 
+// This functions finds the whole list in database and then renders home_sorted.ejs
+// it also sends the list to be rendered as ejs locals
+// it sends additional paramets which is to tell to update layout so that 
+// user can filter by sorted or unsorted
+
 module.exports.loadSorted = function (request, response) {
 
     Task.find({}, function (err, tasks) {
@@ -36,6 +46,12 @@ module.exports.loadSorted = function (request, response) {
         }
     })
 }
+
+// Adds a list in db and then goes back
+// The important things to find in this is that the deadline is being converted to
+// the correct time by adding 18:29:59 because default is 05:30:00
+// it also adds a parameter state in the list item which indicates that either
+// the task is completed or not
 
 module.exports.add = function (request, response) {
     var d = new Date();
@@ -59,6 +75,8 @@ module.exports.add = function (request, response) {
     });
 }
 
+// Queries on the basis of id passed by view db and deletes the item.
+
 module.exports.delete = function (request, response) {
     let id = request.query.id;
     console.log(id);
@@ -73,6 +91,8 @@ module.exports.delete = function (request, response) {
     })
 }
 
+// Deletes all items unconditionally
+
 module.exports.deleteAll = function (request, response) {
     Task.deleteMany({}, function (err) {
         if (err) {
@@ -86,25 +106,7 @@ module.exports.deleteAll = function (request, response) {
 
 }
 
-module.exports.updateStat = function (request, response) {
-
-    const id = request.query.id;
-    const state = parseInt(request.query.state);
-    console.log(id + " " + state);
-    let note;
-
-    Task.updateOne({ "_id": id }, { $set: { state: state } }, function (err) {
-        if (err) {
-            console.log("Error in finding user 2 2 2");
-            return response.end('{ "status":"failed"}');
-        }
-        else {
-            console.log("Updated!");
-            return response.end('{ "status":"success"}');
-        }
-    })
-
-}
+// Delete only those items whose state is 1 (ie completed)
 
 module.exports.deleteCompleted = function (request, response) {
     Task.deleteMany({ "state": "1" }, function (err) {
@@ -116,4 +118,27 @@ module.exports.deleteCompleted = function (request, response) {
             return response.redirect('back');
         }
     })
+}
+
+// Queries db using id and updates state given by query param
+//  and return a json object about success of thhe
+
+module.exports.updateStat = function (request, response) {
+
+    const id = request.query.id;
+    const state = parseInt(request.query.state);
+    console.log(id + " " + state);
+    let note;
+
+    Task.updateOne({ "_id": id }, { $set: { state: state } }, function (err) {
+        if (err) {
+            console.log("Error in finding user!!!!");
+            return response.end('{ "status":"failed"}');
+        }
+        else {
+            console.log("Updated!");
+            return response.end('{ "status":"success"}');
+        }
+    })
+
 }

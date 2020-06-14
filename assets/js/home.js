@@ -1,15 +1,19 @@
 (function () {
 
+    // basic requirements
     const categoryDivs = document.getElementsByClassName("category");
     const checkboxes = document.getElementsByClassName("input-check");
     let completed = 0;
     let pending = 0;
 
+    // after state change of any list item there 
+    //  must be updation of pending and complete
     let updatePending = function () {
         document.getElementById("completed-tag").innerHTML = "Completed : " + completed;
         document.getElementById("pending-tag").innerHTML = "Pending : " + pending;
     }
 
+    // deciding the color of the category divs
     for (const it of categoryDivs) {
         if (it.innerHTML.toLowerCase() == "gym") {
             it.style.backgroundColor = "#EF6C00";
@@ -30,9 +34,15 @@
 
 
 
+    //  WHEN RENDERING FOR THE FIRST TIME( ONLY HAPPENS ONCE ON FIRST LOAD )
+    //  appropriately showing whether a todo has missed deadline or if it's near
+    //  This also marks linethorughs and 
+    //  checkboxes of completed items as checked on rendering
+    //  It also helps in removing the deadline miss/deadline near tag if item is checked
+
     for (const chkbox of checkboxes) {
         let parentListElement = chkbox.parentElement.parentElement.parentElement.parentElement;
-        console.log(parentListElement);
+        // console.log(parentListElement);
         let lastDate = new Date(parentListElement.querySelector(".completion-date-raw").innerHTML);
         let today = new Date();
         let daysLeft = (lastDate.getTime() - today.getTime()) / (60 * 60 * 24 * 1000);
@@ -58,13 +68,21 @@
         }
     }
 
+    // As soon as JS loads update pending or complete tasks
     updatePending();
 
 
 
+    // Setting an on click listener on every checkbox FEATURES :
+    // 1 As soon as the state of checbox changes from checked to unchecked it helps in
+    // 2 bringing upon some asthetic changes such as color of div, line thorughs, etc
+    // 3 it also removes deadline miss or deadline near tag if the item is checked
+    // 4 ANOTHER ESSENTIAL FEATURE is that this makes a FETCH API request to 
+    //   backend which stores the state of a particular element in it's databsase
+
     for (const chkbox of checkboxes) {
         let parentListElement = chkbox.parentElement.parentElement.parentElement.parentElement;
-        console.log(parentListElement);
+        // console.log(parentListElement);
         chkbox.onchange = function () {
             let lastDate = new Date(parentListElement.querySelector(".completion-date-raw").innerHTML);
             let today = new Date();

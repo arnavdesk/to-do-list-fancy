@@ -7,7 +7,6 @@ mongoose.connect("mongodb://localhost/todo_list_db", { useNewUrlParser: true });
 // get db instance
 const db = mongoose.connection;
 
-
 // handle error
 db.on("error", console.error.bind(console, `error connecting to db`));
 

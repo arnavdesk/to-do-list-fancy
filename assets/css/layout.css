@@ -1,4 +1,7 @@
+/* font used */
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
+/* global elements */
 body{
     margin: 0px;
     box-sizing: border-box;
@@ -21,14 +24,11 @@ main{
     max-height: 95vh;
 }
 
+
+/* generic classes */
 .heading{
     margin: 0px;
     color: lightslategray;
-}
-
-.app-heading-div{
-    display: flex;
-    justify-content: center;
 }
 
 .border-bottom-px{
@@ -48,6 +48,14 @@ main{
     color: slategray;
     margin: 10px 0px;
 }
+
+/* application heading div*/
+.app-heading-div{
+    display: flex;
+    justify-content: center;
+}
+
+/* Basic details div */
 
 .basic-details{
     display: flex;
@@ -92,6 +100,8 @@ select{
     padding: 0px 8px;
     box-sizing: border-box;
 }
+
+/* Buttons and hovering buttons stlye */
 
 .actions{
     display: flex;
@@ -143,9 +153,16 @@ select{
     background-color: #C51162;
 }
 
+/* item list container */
+
+#empty-notify{
+    display: none;
+    text-align: center;
+}
+
 #item-list{
-    transition: all 0.5s ease-in-out;
-    perspective: 1000px;
+    /* transition: all 0.5s ease-in-out;
+    perspective: 1000px; */
     min-height: 20px;
     padding: 0px;
     margin: 0px;
@@ -154,9 +171,13 @@ select{
     flex-direction: column;
 }
 
+/* Task container */
+
 .task-container{
     overflow-Y: scroll;
 }
+
+/* information leaf on top left */
 
 .information-leaf{
     font-size: 12px;
@@ -187,6 +208,8 @@ select{
     font-size: 20px;
     background-color: #1B5E20;
 }
+
+/* Alert bar container */
 
 .alert-container{
     display: none;
@@ -229,6 +252,8 @@ select{
     justify-content: center;
 }
 
+/* last div for extras */
+
 .extras{
     display: flex;
 }
@@ -245,11 +270,15 @@ select{
     box-sizing: border-box;
 }
 
+/* media quereis for screens below 1200px */
+
 @media screen and (max-width:1200px){
     main{
         width: 80%;
     }
 }
+
+/* media quereis for screens below 786px */
 
 @media screen and (max-width:768px){
     .max-width-item{

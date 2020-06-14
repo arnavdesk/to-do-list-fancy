@@ -1,4 +1,4 @@
-
+/* List item */
 .list-item{
     opacity: 1;
     transition : all 0.4s cubic-bezier(.36,-0.64,.34,1.76);
@@ -20,7 +20,6 @@
 .list-item:hover{
     transform: scale(1.01);
 }
-
 
 label{
     width: 70%;
@@ -99,21 +98,18 @@ input[type=checkbox]{
     margin-left: 20px;
 }
 
+/* Media Queries for screens under 786px */
+
 @media screen and (max-width:768px){
+
     .list-item{
         font-size: 20px;
     }
+
     label{
         width: 99%;
     }
-    /* .list-item{
-        flex-direction: column;
-        align-items: flex-start;
-    } */
-    /* .deadline-category-div{
-        width: 30%;
-        align-self: center;
-    } */
+
     .delete{
         margin-left: 8px;
     }
