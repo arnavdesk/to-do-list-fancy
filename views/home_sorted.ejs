@@ -1,10 +1,13 @@
-<%# Template file for showing list in normal order  %>
+<%# Template file for showing Sorted list and everything is same as home %>
+
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 
+<%# Sorting list task_list passed by task controller%>
+<% const task_list_sorted = task_list.sort(function(a,b){ %>
+<%  return a.date - b.date })%>
 
-<%# Rendring list by using task_list passed by task controller %>
-
-<% for (const it of task_list){ %>
+<%# Rendring Sorted list  %>
+<% for (const it of task_list_sorted){ %>
 
 
 <li class="list-item">

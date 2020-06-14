@@ -8,6 +8,8 @@ const taskController = require("../controllers/task_controller");
 
 router.get("/", taskController.load);
 
+router.get("/sorted-home", taskController.loadSorted);
+
 router.post("/add-task", taskController.add);
 
 router.get("/delete-task", taskController.delete);

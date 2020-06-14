@@ -2,6 +2,13 @@
 
     const categoryDivs = document.getElementsByClassName("category");
     const checkboxes = document.getElementsByClassName("input-check");
+    let completed = 0;
+    let pending = 0;
+
+    let updatePending = function () {
+        document.getElementById("completed-tag").innerHTML = "Completed : " + completed;
+        document.getElementById("pending-tag").innerHTML = "Pending : " + pending;
+    }
 
     for (const it of categoryDivs) {
         if (it.innerHTML.toLowerCase() == "gym") {
@@ -20,6 +27,8 @@
             it.style.backgroundColor = "#1565C0";
         }
     }
+
+
 
     for (const chkbox of checkboxes) {
         let parentListElement = chkbox.parentElement.parentElement.parentElement.parentElement;
@@ -41,11 +50,15 @@
             parentListElement.style.backgroundColor = "gray";
             parentListElement.querySelector(".completion-date").style.textDecoration = "line-through";
             parentListElement.querySelector(".note").style.textDecoration = "line-through";
+            completed++
         } else {
             chkbox.checked = false;
             parentListElement.style.backgroundColor = "white";
+            pending++;
         }
     }
+
+    updatePending();
 
 
 
@@ -66,6 +79,9 @@
                     parentListElement.querySelector(".id").innerHTML
                     + "&state=" + 1).then(response => response.json()).then(data => console.log(data));
                 parentListElement.querySelector(".state").innerHTML = 1;
+                completed++;
+                pending--;
+                updatePending();
             }
             else {
                 if (daysLeft < 4) {
@@ -78,6 +94,9 @@
                     parentListElement.querySelector(".id").innerHTML
                     + "&state=" + 0).then(response => response.json()).then(data => console.log(data));
                 parentListElement.querySelector(".state").innerHTML = 0;
+                pending++;
+                completed--;
+                updatePending();
             }
         }
     }

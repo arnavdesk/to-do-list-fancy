@@ -1,6 +1,8 @@
 (function () {
     const datePicker = document.getElementById("due-date");
     const taskContainer = document.getElementsByClassName("task-container")[0];
+    const urlWindow = window.location.href;
+    console.log(urlWindow);
     window.onload = function () {
         var d = new Date();
         var month = '' + (d.getMonth() + 1);
@@ -22,8 +24,7 @@
 
         setTimeout(function () {
             clearInterval(timer);
-            taskContainer.scrollTop = 0;
-        }, 1200)
+        }, 1000)
     }
 
     let infoBtn = document.getElementById("info-btn");
@@ -31,7 +32,7 @@
 
     infoBtn.onclick = function () {
         if (informationLeaf.style.top == "0px") {
-            informationLeaf.style.top = "-441px"
+            informationLeaf.style.top = "-468px"
         }
         else {
             informationLeaf.style.top = "0px"

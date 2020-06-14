@@ -1,3 +1,4 @@
+<%# Whole Layout of the file for library used express-ejs-layouts %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,7 @@
 
 <body>
 
+    <%# alert container used for showing an alert %>
     <div class="alert-container">
         <div class="overlay"></div>
         <div class="alert-bar">
@@ -28,7 +30,7 @@
 
 
 
-
+    <%# Know More leaf on top left %>
     <div class="information-leaf">
         <div class="info-div">
             <p>1. To add a todo enter description, categeory and due-date. (Everything is mandatory).
@@ -41,16 +43,19 @@
                 will maintain that item was completed or not.</p>
             <p>7. There is deadline feature, ie, if the deadline is in next 4 days it will show deadline is near or
                 if the deadline is missed it will show deadline missed.</p>
+            <p>Github-Link : <a href="https://github.com/arnavdesk/to-do-list-fancy">To-Do-List</a> </p>
         </div>
         <div id="info-btn">Know-More</div>
     </div>
 
+    <%# Main container containg whole layout %>
     <main>
-
+        <%# Heading %>
         <div class="app-heading-div border-bottom-px padding-10px">
             <h1 class="heading"><i class="fas fa-clipboard-list"></i> TODO App</h1>
         </div>
 
+        <%# form for submitting a task %>
         <form action="/add-task" method="POST">
             <div class="task-input border-bottom-px padding-10px">
                 <h4 class="subheadings"> Task Description</h4>
@@ -82,7 +87,7 @@
             </div> -->
             </div>
 
-
+            <%# Action div which contains buttons for either adding or deleting %>
             <div class="actions border-bottom-px padding-10px">
                 <button class="center-align max-width-item add" type="submit"><i class="fas fa-plus"></i> ADD
                     TASK</button>
@@ -96,10 +101,18 @@
             </div>
         </form>
 
+        <%# List container. And the List is rendered in home file %>
         <div class="task-container border-bottom-px padding-10px">
             <ul id="item-list">
                 <%- body %>
             </ul>
+        </div>
+
+        <%# Div for showing completed pending items and also to sort by deadline or normally %>
+        <div class="extras">
+            <div id="completed-tag">Completed : </div>
+            <div id="pending-tag">Pending : </div>
+            <a class="sort-d" href="<%= link_to_page_filter %>"> <%= filter_page_name %> </a>
         </div>
 
 
